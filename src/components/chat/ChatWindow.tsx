@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useChat } from '../../context/ChatContext';
 import { formatTime } from '../../utils/formatTime';
-import { FiSend, FiPaperclip, FiSmile, FiAlertCircle } from 'react-icons/fi';
+import { FiSend, FiPaperclip, FiSmile, FiAlertCircle, FiChevronDown, FiBell } from 'react-icons/fi';
 import './ChatWindow.css';
 
 // Bước 10: Tách hook "cho ngầu" giống sinh viên khoe kĩ năng
@@ -65,64 +65,82 @@ const ChatWindow: React.FC = () => {
   }
 
   return (
-    <div className="chat-window">
-      {/* HEADER */}
-      <div className="chat-window-header">
-        <div className="header-info">
-          <h3>{otherUser.name}</h3>
-          <p>Trạng thái: {otherUser.status}</p>
+    <>
+      <div className="chat-window__header">
+
+
+        <div className="chat-window__header-actions">
+          <button className="status-button" type="button">
+            <span>Status: Sale</span>
+            <FiChevronDown className="status-icon" />
+          </button>
+
+          <button className="notification-button" type="button" aria-label="Notifications">
+            <FiBell />
+          </button>
         </div>
       </div>
+      <div className="chat-window">
 
-      {/* MESSAGE LIST */}
-      <div className="chat-messages">
-        {messages.map((msg) => {
-          const isSender = msg.senderId === '1';
-          const senderObj = state.users.find((u) => u.id === msg.senderId);
+        {/* HEADER */}
+        <div className="chat-window-header">
+          <div className="header-info">
+            <h3>{otherUser.name}</h3>
+            <p>Trạng thái: {otherUser.status}</p>
+          </div>
+        </div>
 
-          return (
-            <div key={msg.id} className={`message-item ${isSender ? 'sent' : 'received'}`}>
-              {!isSender && (
-                <img src={senderObj?.avatar} alt="Avatar" className="message-avatar" />
-              )}
-              <div className="message-content">
-                <div className="message-bubble">
-                  {msg.content}
+        {/* MESSAGE LIST */}
+        <div className="chat-messages">
+          {messages.map((msg) => {
+            const isSender = msg.senderId === '1';
+            const senderObj = state.users.find((u) => u.id === msg.senderId);
+
+            return (
+              <div key={msg.id} className={`message-item ${isSender ? 'sent' : 'received'}`}>
+                {!isSender && (
+                  <img src={senderObj?.avatar} alt="Avatar" className="message-avatar" />
+                )}
+                <div className="message-content">
+                  <div className="message-bubble">
+                    {msg.content}
+                  </div>
+                  <span className="message-time">{formatTime(msg.timestamp)}</span>
                 </div>
-                <span className="message-time">{formatTime(msg.timestamp)}</span>
               </div>
-            </div>
-          );
-        })}
-        <div ref={messagesEndRef} />
-      </div>
+            );
+          })}
+          <div ref={messagesEndRef} />
+        </div>
 
-      {/* INPUT AREA */}
-      <div className="chat-input-area">
-        <div className="input-actions-top">
-          <button className="btn-outline">REQUEST VISIT</button>
-          <button className="btn-outline">MAKE OFFER</button>
-        </div>
-        <div className="input-wrapper">
-          <button className="btn-icon emoji-btn">
-            <FiSmile />
-          </button>
-          <input
-            type="text"
-            placeholder="Type a message..."
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <button className="btn-icon">
-            <FiPaperclip />
-          </button>
-          <button className="btn-send" onClick={handleSendMessage}>
-            <FiSend />
-          </button>
+        {/* INPUT AREA */}
+        <div className="chat-input-area">
+          <div className="input-actions-top">
+            <button className="btn-outline">REQUEST VISIT</button>
+            <button className="btn-outline">MAKE OFFER</button>
+          </div>
+          <div className="input-wrapper">
+            <button className="btn-icon emoji-btn">
+              <FiSmile />
+            </button>
+            <input
+              type="text"
+              placeholder="Type a message..."
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button className="btn-icon">
+              <FiPaperclip />
+            </button>
+            <button className="btn-send" onClick={handleSendMessage}>
+              <FiSend />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
+
   );
 };
 

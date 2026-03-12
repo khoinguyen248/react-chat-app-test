@@ -94,7 +94,57 @@
 .btn-icon:hover {
   opacity: 1;
 }
+.chat-window__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
 
+.chat-window__header-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chat-window__header-info p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #8a8a8a;
+}
+
+.chat-window__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-button,
+.notification-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.status-button {
+  gap: 4px;
+  font-size: 13px;
+  color: #444;
+}
+
+.status-icon {
+  font-size: 14px;
+}
+
+.notification-button {
+  font-size: 16px;
+  color: #444;
+}
 .btn-send {
   background-color: var(--primary-blue);
   color: white;
