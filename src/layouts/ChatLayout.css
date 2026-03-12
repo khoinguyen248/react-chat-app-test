@@ -1,0 +1,13 @@
+.chat-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-white);
+  overflow: hidden;
+}
+
+.chat-main {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}

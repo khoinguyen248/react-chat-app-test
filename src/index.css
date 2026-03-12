@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-blue: #3A82F6;
+  --primary-blue-hover: #2563EB;
+  --sidebar-bg: #EEF2FF;
+  --bg-white: #FFFFFF;
+  --text-dark: #1E293B;
+  --text-muted: #94A3B8;
+  --text-light: #CBD5E1;
+  --border-light: #F1F5F9;
+  --danger: #EF4444;
+  --message-bg-sender: #3A82F6;
+  --message-text-sender: #FFFFFF;
+  --message-bg-receiver: #F1F5F9;
+  --message-text-receiver: #1E293B;
+  --font-family: 'Inter', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #FAFAFA;
+  color: var(--text-dark);
+  height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-family);
+}
+
+input {
+  font-family: var(--font-family);
+  border: none;
+  outline: none;
+}
+
+/* Layout overrides */
+#root {
+  height: 100%;
+}
